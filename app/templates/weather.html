@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        select {
+            background-color: white;
+            width: 20vw;
+            border-color: transparent;
+            height: 5vw;
+        }
+
+        select:hover {
+            border-color: darkgrey;
+        }
+
+        .submit-btn {
+            margin-top: 2%;
+        }
+
+        .temperature-container{
+            position: relative;
+        }
+
+        .temperature-heading {
+            position: relative;
+            left: -12%;
+            margin: 0;
+        }
+
+        #temperature-in-C {
+            position: relative;
+            margin: 0;
+            font-size: 5vw;
+        }
+
+        .temp-location {
+            position: relative;
+            left: 12%;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/city" method="POST">
+
+        <div>
+            <select name="country" class="countries" id="countryId">
+                <option value="">Select Country</option>
+            </select>
+
+            <select name="state" class="states" id="stateId">
+                <option value="">Select State</option>
+            </select>
+
+
+
+            <select name="city" class="cities" id="cityId">
+                <option value="">Select City</option>
+            </select>
+        </div>
+
+        <div class="submit-btn">
+            <input type="submit" value="Check current weather">
+        </div>
+
+    </form>
+
+    {% if render_response == "success" %}
+    
+
+    <div class="temperature-container">
+        <h3 class="temperature-heading">Temperature</h3>
+        <h1 id="temperature-in-C">{{current_temperature_celsius}}&#8451;</h1>
+        <p class="temp-location">{{location}}</p>
+    </div>
+
+
+    {% endif %}
+
+
+
+
+
+
+
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//geodata.solutions/includes/countrystatecity.js"></script>
+</body>
+
+</html>
